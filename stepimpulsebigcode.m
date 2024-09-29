@@ -1,0 +1,32 @@
+a=input('Nilimesh = ')
+t=0:1:50
+y1=a*(t>=0)
+y2=a*(t==0)
+subplot(2,2,1)
+plot(t,y1)
+hold on 
+plot(t,y2)
+b=tf([1],[1 1])
+c=feedback(b,1)
+m=lsim(y1,c,t)
+n=lsim(y2,c,t)
+subplot(2,2,2)
+plot(t,m)
+hold on 
+plot(t,n)
+d=tf([1],[1 1 0])
+e=feedback(d,1)
+p=lsim(y1,e,t)
+q=lsim(y2,e,t)
+subplot(2,2,3)
+plot(t,p)
+hold on 
+plot(t,q)
+f=tf([1],[1 1 0 0])
+g=feedback(f,1)
+o=lsim(y1,g,t)
+x=lsim(y2,g,t)
+subplot(2,2,4)
+plot(t,o)
+hold on 
+plot(t,x)
